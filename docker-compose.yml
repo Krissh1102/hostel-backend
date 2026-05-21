@@ -1,0 +1,47 @@
+version: '3.9'
+
+services:
+
+  backend:
+
+    build: .
+
+    container_name: hostel_backend
+
+    ports:
+      - "8000:8000"
+
+    env_file:
+      - .env
+
+    depends_on:
+      - postgres
+
+    volumes:
+      - .:/app
+
+    restart: always
+
+  postgres:
+
+    image: postgres:16
+
+    container_name: hostel_postgres
+
+    environment:
+
+      POSTGRES_DB: hostel_db
+
+      POSTGRES_USER: postgres
+
+      POSTGRES_PASSWORD: yourpassword
+
+    ports:
+      - "5432:5432"
+
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+
+  postgres_data:
