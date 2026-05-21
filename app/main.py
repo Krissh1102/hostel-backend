@@ -8,11 +8,6 @@ app = FastAPI(
     title="Hostel Vacancy API"
 )
 
-@app.on_event("startup")
-def startup():
-    models.Base.metadata.create_all(
-        bind=engine
-    )
 
 
 app.include_router(hostel_router)
