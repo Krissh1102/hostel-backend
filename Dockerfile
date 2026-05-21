@@ -14,15 +14,4 @@ COPY . .
 
 EXPOSE 8000
 
-<<<<<<< HEAD:DockerFile
 CMD ["uvicorn", "app.main:app","--host","0.0.0.0","--port","8000"]
-=======
-CMD [
-    "uvicorn",
-    "app.main:app",
-    "--host",
-    "0.0.0.0",
-    "--port",
-    "8000"
-]
->>>>>>> 76454b61b67366bf5653854fdbb5c81aafb0ec51:Dockerfile
