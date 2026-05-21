@@ -4,17 +4,22 @@ from app.database import models
 from app.routes.hostel_routes import router as hostel_router
 from app.routes.auth_routes import router as auth_router
 
-models.Base.metadata.create_all(bind = engine)
-
 app = FastAPI(
-    title= "Hostel Vacany API"
+    title="Hostel Vacancy API"
 )
+
+@app.on_event("startup")
+def startup():
+    models.Base.metadata.create_all(
+        bind=engine
+    )
+
+
 app.include_router(hostel_router)
 app.include_router(auth_router)
 
 @app.get("/")
 def home():
-
-    return{
+    return {
         "message": "Welcome to the Hostel Vacancy API"
     }
